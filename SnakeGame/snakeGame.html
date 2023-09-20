@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Snake Game</title>
+    
+    <link rel="stylesheet" href="snakeGame.css">
+
+</head>
+<body >
+ <!-- ---------------------------- header start ----------------------------- -->
+ <div id="header">
+    <h3><a href="../index.html">MINI GAME PROJECT</a></h3>
+</div>
+
+<hr width="300px" color="palevioletred" size="1">
+<!-- ---------------------------- header finish ----------------------------- -->  
+<div id="title">
+    <h3 id="titleName">Snake Game</h3>
+
+    <div id="popup_layer" style="display: block;">
+        <div class="popup_box">
+            <div class="popup_cont">
+                <h1> 상(⇧) 하(⇩) 좌(⇦) 우(⇨) 방향키로 뱀을 조작해서 최대한 많은 사과를 먹으세요!<br><br>
+                      뱀의 머리가 몸통에 닿거나, 벽에 부딪히면 게임이 끝납니다.</h1>
+                <input type="button" id="OKBtn" value="OK" onclick="closePop()">
+            </div>
+        </div>
+    </div>
+    
+    <table id="titleTable">
+        <tr>
+            <td class="appleImages"><img src="images/apple.png" class="appleImages"></td>
+            <td id="appleCount">0</td>
+            <td id="playTd"><input type="button" id="palyButton" onclick="gameStart()" value="▷ play"></td>
+        </tr>
+    </table>
+
+</div>
+
+<div id="center"></div>
+
+<div id="footer"></div>
+
+<script src="snakeGame.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,199 @@
+#header, #center { text-align: center; }
+a {
+    color: rgb(202, 50, 96);
+    text-decoration: none;
+    font-size: 30px;
+}
+#title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+    color: rgb(112, 0, 204);
+}
+#center {
+    margin: 0 auto;
+    border-collapse: collapse;
+    border: none;
+    height: 700px;
+}
+td {
+    padding: 0px;
+}
+#myTetris {
+    margin-bottom: 70px;
+}
+#myTetris, #nextTable {
+    /* border-collapse: collapse; ==> td에 radius 값이 먹히지 않음*/
+    border-spacing: 0;
+    border-radius: 6px;
+    border: 1px outset white;
+    float: left;
+}
+#myTetris td {
+    width: 25px;
+    height: 25px;
+    border-radius: 3px;
+    
+}
+#nextTable td {
+    width: 15px;
+    height: 15px;
+    border-radius: 3px;
+}
+
+/* sideTable */
+.blank {
+    height: 25px;
+}
+.sideTable {
+    background-color: rgb(141, 44, 221);
+    color: black;
+    font-weight: bold;
+    padding: 5px 0px;
+}
+#holdTable, #nextScreen {
+    height: 100px;
+    background-color: black;
+    background:linear-gradient(45deg,  transparent 15px, black 0);
+}
+#nextScreen {
+    background:linear-gradient(-45deg, transparent 15px, black 0);
+}
+#nextScreen{
+    height: 500px;
+    margin-bottom: 100px;
+}
+#gamePlayInfo {
+    border: 3px solid rgb(116, 102, 129);
+    border-radius: 10px;
+    color: rgb(116, 102, 129);
+    width: 190px;
+    height: 130px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: right;
+    padding-right: 10px;
+    margin: 0px 5px 0px 5px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    line-height: 150%;
+}
+#levelTd, #linesTd, #scoreTd, #timerTd {
+    height: 50px;
+    padding-right: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: right;
+    color: rgb(82, 21, 139);
+}
+/* mino class color */
+.white {
+    background-color: white;
+    border: none;
+}
+.green   {
+    background-color: green;
+    border: 2px outset rgb(20, 173, 20);
+}
+.red     {
+    background-color: red;
+    border: 2px outset rgb(255, 102, 97);
+}
+.purple  {
+    background-color: purple;
+    border: 2px outset rgb(179, 23, 179);
+}
+.orange  {
+    background-color: orange;
+    border: 2px outset rgb(255, 206, 114)
+}
+.blue    {
+    background-color: rgb(0, 47, 255);
+    border: 2px outset rgb(20, 114, 255);
+}
+.yellow  {
+    background-color: yellow;
+    border: 2px outset rgb(243, 243, 169);
+}
+.skyblue {
+    background-color: skyblue;
+    border: 2px outset rgb(191, 230, 245);
+}
+.black   {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(194, 194, 194);
+}
+
+
+.gray    {
+    background-color: rgb(116, 102, 129);
+    border: 2px outset rgb(144, 128, 151);
+    border-radius: 100%;
+}
+
+/* preview class color */
+.green_border {
+    border: 2px solid rgb(20, 173, 20);
+}
+.red_border {
+    border: 2px solid red;
+}
+.purple_border {
+    border: 2px solid purple;
+}
+.orange_border {
+    border: 2px solid orange;
+}
+.blue_border {
+    border: 2px solid blue;
+}
+.yellow_border {
+    border: 2px solid yellow;
+}
+.skyblue_border {
+    border: 2px solid skyblue;
+}
+
+
+/* #popup_layer {
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    position:fixed;
+    top:0;
+    left:0;
+}
+.popup_box{
+    width:350px;
+    height: 300px;
+    position: relative;
+    z-index:1002;
+    top:50%;
+    left:50%;
+    text-align: center;
+    transform:translate(-50%, -50%);
+    box-sizing:border-box;
+    opacity: 0.8;
+    box-shadow: 2px 5px 10px 0px rgba(0,0,0,0.35);
+    -webkit-box-shadow: 2px 5px 10px 0px rgba(0,0,0,0.35);
+    -moz-box-shadow: 2px 5px 10px 0px rgba(0,0,0,0.35);
+    background:#ffffff;
+    color: #524640;
+    border-radius: 10px;
+    font-size: 10px;
+    padding:25px;
+}
+#OKBtn {
+    background:none;
+    color: #524640;
+    opacity: 0.8;
+    margin-top: 15px;
+    font-size: 30px;
+    padding: 5px 10px;
+    font-weight: bold;
+    border: 2px solid #524640;
+    border-radius: 10px;
+    cursor: pointer;
+} */

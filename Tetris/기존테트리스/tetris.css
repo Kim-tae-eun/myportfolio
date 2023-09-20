@@ -1,0 +1,119 @@
+#header, #center { text-align: center; }
+a {
+    color: rgb(202, 50, 96);
+    text-decoration: none;
+    font-size: 30px;
+}
+#title, #nextTd, #lineClearTd, #levelTd, #scoreTd{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+    color: crimson;
+    text-shadow: 4px 2px 2px lightgray;
+}
+#center {
+    margin: 0 auto;
+    width: 750px;
+}
+#myTetris, #nextTable {
+    /* border-collapse: collapse; ==> td에 radius 값이 먹히지 않음*/
+    border-spacing: 0;
+    border-radius: 6px;
+    border: 1px outset white;
+    margin: 0 auto;
+    background-color: black;
+    float: left;
+}
+#nextTable, #nextTd {
+    margin-left: 50px;
+    margin-bottom: 20px;
+}
+#nextTd {
+    margin-left: 70px;
+}
+#myTetris td {
+    width: 25px;
+    height: 25px;
+    border-radius: 3px;
+}
+#nextTable td {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+}
+#nextTd, #lineClearTd, #levelTd, #scoreTd {
+    width: 150px;
+    font-size: 25px;
+    text-shadow: 2px 2px 2px lightgray;
+}
+#scoreTd{
+    width : 300px;
+    height: 200px;
+}
+#lineClearCount, #level, #score {
+    color: rgb(61, 61, 61);
+}
+
+.green   {
+    background-color: green;
+    border: 2px outset rgb(20, 173, 20);
+}
+.red     {
+    background-color: red;
+    border: 2px outset rgb(255, 102, 97);
+}
+.purple  {
+    background-color: purple;
+    border: 2px outset rgb(179, 23, 179);
+}
+.orange  {
+    background-color: orange;
+    border: 2px outset rgb(255, 206, 114)
+}
+.blue    {
+    background-color: rgb(0, 47, 255);
+    border: 2px outset rgb(20, 114, 255);
+}
+.yellow  {
+    background-color: yellow;
+    border: 2px outset rgb(243, 243, 169);
+}
+.skyblue {
+    background-color: skyblue;
+    border: 2px outset rgb(191, 230, 245);
+}
+.black   {
+    background-color: black;
+    border: 1px solid rgb(20, 20, 20);
+    border-radius: 0px;
+}
+.gray    {
+    background-color: rgb(143, 143, 143);
+    border: 2px outset rgb(187, 187, 187);
+    /* background-color: rgb(202, 50, 96);
+    border: 2px outset rgb(224, 68, 115); */
+    border-radius: 100%;
+}
+
+.green_border {
+    border: 2px solid rgb(20, 173, 20);
+}
+.red_border {
+    border: 2px solid red;
+}
+.purple_border {
+    border: 2px solid purple;
+}
+.orange_border {
+    border: 2px solid orange;
+}
+.blue_border {
+    border: 2px solid blue;
+}
+.yellow_border {
+    border: 2px solid yellow;
+}
+.skyblue_border {
+    border: 2px solid skyblue;
+}

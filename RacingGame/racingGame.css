@@ -1,0 +1,63 @@
+#header { text-align: center; }
+a {
+    color: rgb(202, 50, 96);
+    text-decoration: none;
+    font-size: 30px;
+}
+#titleName {
+    text-align: center;
+    color: rgb(70, 70, 70);
+    margin-bottom: 30px;
+    font-size: 30px;
+}
+table {
+    text-align: center;
+    vertical-align: middle;
+    margin: auto;
+}
+#selectTable.td {
+    width: 20px;
+    height: 20px;
+    border-collapse: collapse;
+}
+#mainText {
+    font-weight: bold;
+    font-size: 20px;
+    padding: 20px;
+
+}
+.selNum {
+    color: black;
+    font-weight: bold;
+    padding: 5px;
+}
+.selNum_radio {
+    cursor: pointer;
+}
+.img {
+    width: 120px;
+    border: 1px solid gray;
+    padding: 10px;
+}
+#playBtn, #replayBtn{
+    padding: 15px;
+    border-radius: 30px;
+    background-color: rgb(96, 43, 196);
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+.racingTd {
+    width: 20px;
+    height: 20px;
+    border-collapse: collapse;
+}
+#footerTd {
+    width: 50px;
+    padding: 10px 0px;
+    color: gray;
+}

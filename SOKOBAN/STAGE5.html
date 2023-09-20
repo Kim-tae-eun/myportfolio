@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>SOKOBAN</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<!-- ---------------------------- header start ----------------------------- -->
+<div id="header">
+    <h3><a href="../index.html">MINI GAME PROJECT</a></h3>
+</div>
+
+<hr width="300px" color="palevioletred" size="1">
+<!-- ---------------------------- header finish ----------------------------- -->  
+
+<div id="title">
+    <h3 id="gameTitle">소코반 게임</h3>
+</div>
+
+
+<div id="center">
+    <div>
+        <input type="button" value="STAGE 1" class="stageBtn" name="1" onclick="stageBtnClick(this.name)">
+        <input type="button" value="STAGE 2" class="stageBtn" name="2" onclick="stageBtnClick(this.name)">
+        <input type="button" value="STAGE 3" class="stageBtn" name="3" onclick="stageBtnClick(this.name)">
+        <input type="button" value="STAGE 4" class="stageBtn" name="4" onclick="stageBtnClick(this.name)">
+        <input type="button" value="STAGE 5" class="stageBtn" name="5" onclick="stageBtnClick(this.name)">
+    </div>
+    <div id="content"></div>
+    <div id="userInfo">
+        <table id="userInfoTable">
+            <tr>
+                <td>LEVEL &nbsp; &nbsp; &nbsp;<span id="level">5</span></td>
+            </tr>
+            <tr>
+                <td>MOVES &nbsp;&nbsp; <span id="moves">0</span></td>
+            </tr>
+            <tr>
+                <td>PUSHES &nbsp;&nbsp;<span id="pushes">0</span></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+<div id="footer">
+    <table id="footerTable">
+        <tr>
+            <td><input type = "button" id="replayBtn" value="REPLAY" onclick="replayClick()"></td>
+            <td><input type = "button" id="undoBtn" value="UNDO" onclick="undoClick()"></td>
+        </tr>
+    </table>
+</div>
+
+<!--------------------------------- script -------------------------------------->
+
+<script>
+let mouseHTML = "<img src='images/mouseUp.png'>";
+let $gameTable = document.querySelector("#gameTable");
+let row = 8;
+let col = 8;
+let dataList = [];
+
+let curY = 1;
+let curX = 2;
+let prvsY = curY;
+let prvsX = curX;
+let direction = 1;
+let cheeseMoveCheck = false;
+
+let motionPath =
+[
+    [curY, curX, direction, cheeseMoveCheck],
+];
+
+let cheeseY = 0;
+let cheeseX = 0;
+let moves = 0;
+let pushes = 0;
+let gameover = false;
+
+const WHITE = 0;
+const GRASS = 1;
+const MOUSE = 2;
+const CHEESE = 3;
+const GOAL = 4;
+const WALL = 5;
+
+
+// 1. 맵 생성 + 초기화
+function init() { 
+    // 초기화
+    $gameTable = document.querySelector("#gameTable");
+    if($gameTable != null){
+        $gameTable.remove();
+    }
+
+    // 테이블 + dataList 생성
+    let $content = document.querySelector("#content");
+    let $table = document.createElement("table");
+    $table.id = "gameTable";
+    dataList = [];
+
+    for(let i = 0; i < row; i++){
+        let $tr = document.createElement("tr");
+        let tmp = [];
+
+        for(let j = 0; j < col; j++){
+            let $td = document.createElement("td");
+            
+            if(0<=i && i<=2 && j==0 || i==0 && j==6 || 0<=i && i<=2 && j==7){
+                tmp.push(WHITE);
+            }else if(i==curY && j == curX){
+                tmp.push(MOUSE);
+            }else if(4<=i && i<=6 && j==1){
+                tmp.push(GOAL);
+            }else if(i==2 && j==3 || i==5 && j==2 || i==6 && j==5){
+                tmp.push(CHEESE);
+            }else{
+                tmp.push(GRASS);
+            }
+            $tr.append($td);
+        }
+        $table.append($tr);
+        dataList.push(tmp);
+    }
+    $content.append($table);
+    $gameTable = document.querySelector("#gameTable");
+
+    // 외벽 설정
+    for(let i = 0; i < dataList.length; i++){
+        for(let j = 0; j < dataList[i].length; j++){
+            if(dataList[i][j] != 0){
+                let check = false;
+
+                if(i == 0 || i == row-1 || j == 0 || j == col-1){
+                    check = true;
+                }
+                if(0 <= i-1 && dataList[i-1][j] == 0){
+                    check = true;
+                }
+                if(0 <= j-1 && dataList[i][j-1] == 0){
+                    check = true;
+                }
+                if(i+1 < row && dataList[i+1][j] == 0){
+                    check = true;
+                }
+                if(j+1 < row && dataList[i][j+1] == 0){
+                    check = true;
+                }
+            
+                if(check){
+                    dataList[i][j]=WALL;
+                }
+            }else {
+                // 모서리벽 설정 (외부공간 기준 대각선 안쪽벽)
+                if(0 <= i-1 && 0 <= j-1){
+                    if(dataList[i-1][j-1] == GRASS){
+                        dataList[i-1][j-1] = WALL;
+                    }
+                }
+                if(0 <= i-1 && j+1 < col){
+                    if(dataList[i-1][j+1] == GRASS){
+                        dataList[i-1][j+1] = WALL;
+                    }
+                }
+                if(i+1 < row && 0 <= j-1){
+                    if(dataList[i+1][j-1] == GRASS){
+                        dataList[i+1][j-1] = WALL;
+                    }
+                }
+                if(i+1 < row && j+1 < col){
+                    if(dataList[i+1][j+1] == GRASS){
+                        dataList[i+1][j+1] = WALL;
+                    }
+                }
+            }
+
+            // 내벽 설정
+            if(i==1 && 4<=j && j<=5 || 3<=i && i<=4 && j==2 || 3<=i && i<=4 && j==4 || i==5 && j==5){
+                dataList[i][j]=WALL;
+            }
+        }
+    }
+}
+
+// 색입히기 (클래스 부여)
+function draw() {
+    for(let i = 0; i < dataList.length; i++){
+        for(let j = 0; j < dataList[i].length; j++){
+            let name = dataList[i][j];
+
+            if(name == 0){
+                $gameTable.children[i].children[j].innerHTML="";
+            }else if(name == 1){
+                $gameTable.children[i].children[j].innerHTML="";
+                // 목표지점에 치즈가 없다면
+                if(4<=i && i<=6 && j==1){
+                    $gameTable.children[i].children[j].innerHTML= "<img src='images/hole.png' class='goal'>";
+                }
+            }else if(name == 2){
+                if(direction == 1){
+                    mouseHTML = "<img src='images/mouseUp.png'>";
+                }else if(direction == 2){
+                    mouseHTML = "<img src='images/mouseRight.png'>";
+                }else if(direction == 3){
+                    mouseHTML = "<img src='images/mouseDown.png'>";
+                }else if(direction == 4){
+                    mouseHTML = "<img src='images/mouseLeft.png'>";
+                }
+                
+                $gameTable.children[i].children[j].innerHTML= mouseHTML;
+            }else if(name == 3){
+                $gameTable.children[i].children[j].innerHTML= "<img src='images/cheese.png' class='cheese'>";
+            }else if(name == 4){
+                $gameTable.children[i].children[j].innerHTML= "<img src='images/hole.png' class='goal'>";
+            }else if(name == 5){
+                $gameTable.children[i].children[j].innerHTML= "<img src='images/brick.png'>";
+            }
+        }
+    }
+}
+
+function keydownEvent(e) {
+    // 키보드 입력 따라 방향설정
+    let keyCheck = false;
+    if(e.key == "ArrowUp"){
+        direction = 1;
+        keyCheck = true;
+    }else if(e.key == "ArrowRight"){
+        direction = 2;
+        keyCheck = true;
+    }else if(e.key == "ArrowDown"){
+        direction = 3;
+        keyCheck = true;
+    }else if(e.key == "ArrowLeft"){
+        direction = 4;
+        keyCheck = true;
+    }
+    // console.log("direction = " + direction);
+
+    // 움직임 가능 체크
+    if(keyCheck){
+        let move = isMovable();
+        // 움직일 수 있으면
+        if(move){
+            moves += 1;
+            document.querySelector("#moves").innerText = moves;
+
+            prvsY = curY;
+            prvsX = curX;
+            cheeseY = curY;
+            cheeseX = curX;
+
+            if(direction == 1){
+                curY -= 1;
+                cheeseY -= 2;
+            }else if(direction == 2){
+                curX += 1;
+                cheeseX += 2;
+            }else if(direction == 3){
+                curY += 1;
+                cheeseY += 2;
+            }else if(direction == 4){
+                curX -= 1;
+                cheeseX -= 2;
+            }
+
+            dataList[prvsY][prvsX] = GRASS;
+            cheeseMoveCheck = false;
+            if(dataList[curY][curX] == CHEESE){
+                dataList[cheeseY][cheeseX] = CHEESE;
+                pushes += 1;
+                cheeseMoveCheck = true;
+                document.querySelector("#pushes").innerText = pushes;
+            }
+            dataList[curY][curX] = MOUSE;
+
+            // 경로 기록
+            let tmp = [];
+            tmp.push(curY,curX,direction, cheeseMoveCheck);
+            motionPath.push(tmp);
+            // console.log(motionPath);
+        }
+
+        draw();
+        isGameover();
+    }
+}
+
+function isMovable() {
+    let tmpY = curY;
+    let tmpX = curX;
+    let move = true;
+
+    // 벽 or 치즈인지 체크
+    if(direction == 1){
+        tmpY -= 1;
+        if(tmpY < 0){
+            move = false;
+        }else if(dataList[tmpY][tmpX]==WALL){
+            move = false;
+        }else if(dataList[tmpY][tmpX]==CHEESE && dataList[tmpY - 1][tmpX]!=GRASS && dataList[tmpY - 1][tmpX]!=GOAL){
+            move = false;
+        }
+    }else if(direction == 2){
+        tmpX += 1;
+        if(col-1 < tmpX){
+            move = false;
+        }else if(dataList[tmpY][tmpX]==WALL){
+            move = false;
+        }else if(dataList[tmpY][tmpX]==CHEESE && dataList[tmpY][tmpX + 1]!=GRASS && dataList[tmpY][tmpX + 1]!=GOAL){
+            move = false;
+        }
+    }else if(direction == 3){
+        tmpY += 1;
+        if(row-1 < tmpY){
+            move = false;
+        }else if(dataList[tmpY][tmpX]==WALL){
+            move = false;
+        }else if(dataList[tmpY][tmpX]==CHEESE && dataList[tmpY + 1][tmpX]!=GRASS && dataList[tmpY + 1][tmpX]!=GOAL){
+            move = false;
+        }
+    }else if(direction == 4){
+        tmpX -= 1;
+        if(tmpX < 0){
+            move = false;
+        }else if(dataList[tmpY][tmpX]==WALL){
+            move = false;
+        }else if(dataList[tmpY][tmpX]==CHEESE && dataList[tmpY][tmpX - 1]!=GRASS && dataList[tmpY][tmpX - 1]!=GOAL){
+            move = false;
+        }
+    }
+
+    return move;
+}
+
+function isGameover() {
+    // 게임 종료 체크
+    if(dataList[4][1] == CHEESE && dataList[5][1] == CHEESE && dataList[6][1] == CHEESE){
+       gameover = true;
+    }
+
+    if(gameover){
+        // 이벤트제거 -> 하나의 div만 생성하도록
+        document.removeEventListener("keydown", keydownEvent);
+        
+        // 3초 후 게임종료창
+        setTimeout(function(){
+        console.log("gameover");
+            alert("gameover!");
+        }, 3000);
+    }
+}
+
+function replayClick() {
+    location.href = "STAGE5.html";
+}
+
+function undoClick() {
+    if(0 < moves){
+        let before = motionPath[moves];
+        cheeseMoveCheck = before[3];
+        direction = before[2];
+
+        moves--;
+        document.querySelector("#moves").innerText = moves;
+        motionPath.pop();
+    
+        
+        // 치즈가 밀렸었는지 체크
+        if(cheeseMoveCheck){
+            pushes--;
+            document.querySelector("#pushes").innerText = pushes;
+            
+            if(direction == 1){
+                dataList[curY-1][curX] = GRASS;
+            }else if(direction == 2){
+                dataList[curY][curX+1] = GRASS;
+            }else if(direction == 3){
+                dataList[curY+1][curX] = GRASS;
+            }else if(direction == 4){
+                dataList[curY][curX-1] = GRASS;
+            }
+
+            dataList[curY][curX] = CHEESE;
+        }else{
+            dataList[curY][curX] = GRASS;
+        }
+        
+        before = motionPath[moves];
+        curY = before[0];
+        curX = before[1];
+        direction = before[2];
+        dataList[curY][curX] = MOUSE;
+        draw();
+    }
+}
+
+function stageBtnClick(stage) {
+    if(stage == 1){
+        location.href="STAGE1.html";
+    }else if(stage == 2){
+        location.href="STAGE2.html";
+    }else if(stage == 3){
+        location.href="STAGE3.html";
+    }else if(stage == 4){
+        location.href="STAGE4.html";
+    }else if(stage == 5){
+        location.href="STAGE5.html";
+    }
+}
+
+// 버튼 클릭시 css 효과
+let $replayBtn = document.querySelector("#replayBtn");
+let $undoBtn = document.querySelector("#undoBtn");
+$replayBtn.addEventListener("mousedown", (event) => {
+    $replayBtn.style.border="none";
+    $replayBtn.style.borderTop="3px solid rgb(168, 101, 46)";
+    $replayBtn.style.borderLeft="3px solid rgb(168, 101, 46)";
+});
+$replayBtn.addEventListener("mouseout", (event) => {
+    $replayBtn.style.border="none";
+    $replayBtn.style.borderBottom="3px solid rgb(168, 101, 46)";
+    $replayBtn.style.borderRight="3px solid rgb(168, 101, 46)";
+});
+$replayBtn.addEventListener("mouseup", (event) => {
+    $replayBtn.style.border="none";
+    $replayBtn.style.borderBottom="3px solid rgb(168, 101, 46)";
+    $replayBtn.style.borderRight="3px solid rgb(168, 101, 46)";
+});
+$undoBtn.addEventListener("mousedown", (event) => {
+    $undoBtn.style.border="none";
+    $undoBtn.style.borderTop="3px solid rgb(168, 101, 46)";
+    $undoBtn.style.borderLeft="3px solid rgb(168, 101, 46)";
+});
+$undoBtn.addEventListener("mouseout", (event) => {
+    $undoBtn.style.border="none";
+    $undoBtn.style.borderBottom="3px solid rgb(168, 101, 46)";
+    $undoBtn.style.borderRight="3px solid rgb(168, 101, 46)";
+});
+$undoBtn.addEventListener("mouseup", (event) => {
+    $undoBtn.style.border="none";
+    $undoBtn.style.borderBottom="3px solid rgb(168, 101, 46)";
+    $undoBtn.style.borderRight="3px solid rgb(168, 101, 46)";
+});
+
+document.addEventListener("keydown", keydownEvent);
+
+init();
+draw();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Racing Game</title>
+    
+    <link rel="stylesheet" href="racingGame.css">
+</head>
+<body onload="init()">
+<!-- ---------------------------- header start ----------------------------- -->
+ <div id="header">
+    <h3><a href="../index.html">MINI GAME PROJECT</a></h3>
+</div>
+
+<hr width="300px" color="palevioletred" size="1">
+<br>
+<!-- ---------------------------- header finish ----------------------------- -->  
+<div id="title"><h3 id="titleName">Racing Game</h3></div>
+<div id="center">
+    <table id="selectTable">
+        <tr>
+            <td colspan="5" id="mainText">1등으로 도착하는 말은 몇 번일까요?</td>
+        </tr>
+        <tr>
+            <td style="background-color: red;" class="selNum"><label class="selNum_radio"><input type="radio" name="horse" value="1" checked>1번</label></td>
+            <td style="background-color: orange;" class="selNum"><label class="selNum_radio"><input type="radio" name="horse" value="2">2번</label></td>
+            <td style="background-color: yellow;" class="selNum"><label class="selNum_radio"><input type="radio" name="horse" value="3">3번</label></td>
+            <td style="background-color: green;" class="selNum"><label class="selNum_radio"><input type="radio" name="horse" value="4">4번</label></td>
+            <td style="background-color: blue;" class="selNum"><label class="selNum_radio"><input type="radio" name="horse" value="5">5번</label></td>
+        </tr>
+        <tr>
+            <td><img src="images/red.png" class="img"></td>
+            <td><img src="images/orange.png" class="img"></td>
+            <td><img src="images/yellow.png" class="img"></td>
+            <td><img src="images/green.png" class="img"></td>
+            <td><img src="images/blue.png" class="img"></td>
+        </tr>
+        <tr>
+            <td colspan="5"><input type="button" onclick="gameStart()" value="선택완료" id="playBtn"></td>
+        </tr>
+    </table>  
+</div>
+<br><br>
+<div id="footer"></div>
+
+<script src="racingGame.js"></script>
+</body>
+</html>

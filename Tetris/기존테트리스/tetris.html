@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Tetris</title>
+    
+    <link rel="stylesheet" href="tetris.css">
+</head>
+<body>
+<!-- ---------------------------- header start ----------------------------- -->
+<div id="header">
+    <h3><a href="../../index.html">MINI GAME PROJECT</a></h3>
+</div>
+<hr width="300px" color="palevioletred" size="1">
+<!-- ---------------------------- header finish ----------------------------- -->  
+<div>
+    <h3 id="title">Tetris</h3>
+</div>
+
+<table id="center">
+
+    <tr>
+        <td rowspan="4">
+            <div id="tetrisCenter"></div>
+        </td>
+        <td colspan="2">
+            <div id="nextTd">next</div>
+            <div id="nextScreen"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div id="lineClearTd">Line Clear<br><span id="lineClearCount">0</span></div>
+        </td>
+        <td>
+            <div id="levelTd">Level<br><span id="level">1</span></div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <div id="scoreTd">Score<br><span id="score">0</span></div>
+        </td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+    </tr>
+</table>
+
+
+<script src="tetris.js"></script>
+</body>

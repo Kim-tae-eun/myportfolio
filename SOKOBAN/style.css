@@ -1,0 +1,101 @@
+#header, #title, #center, #footer, #info_msg { text-align: center; }
+a {
+    color: rgb(202, 50, 96);
+    text-decoration: none;
+}
+#gameTitle {
+    color: rgb(255, 143, 51);
+}
+a, #gameTitle, #info_mainMsg {
+    font-size: 30px;
+}
+.stageBtn, #userInfoTable td, #info_msg, #replayBtn, #undoBtn {
+    font-weight: bold;
+}
+.stageBtn {
+    background-color: rgb(255, 157, 77);
+    border: none;
+    border-bottom: 3px solid rgb(168, 101, 46);
+    border-right: 3px solid rgb(168, 101, 46);
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+#center {
+    width: 550px;
+    height: 500px;
+    vertical-align: middle;
+    margin: auto;
+    background-color: rgb(245, 237, 220);
+    border: 5px solid rgb(255, 170, 101);
+    border-radius: 10px;
+    padding: 30px;
+    position: relative;
+}
+#content {
+    vertical-align: middle;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+#gameTable {
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+#gameTable td {
+    background-color: rgb(245, 237, 220);
+    padding: 0px;
+}
+img {
+    width: 40px;
+    height: 40px;
+    display: block;
+}
+.cheese, .goal {
+   width: 30px;
+   height: 30px;
+   margin: 5px;
+}
+#userInfo {
+    height: 100px;
+    text-align: left;
+    position: absolute;
+    bottom: 0px;
+}
+#userInfoTable td {
+    color: rgb(255, 157, 77);
+}
+#info_msg {
+    width: 400px;
+    height: 200px;
+    display: inline-block;
+    margin-top: 50px;
+    background-color: rgb(240, 118, 18);
+    border: 5px solid rgb(255, 255, 255);
+    border-radius: 15px;
+    color: white;
+    font-size: 20px;
+    line-height: 1.8;
+    padding: 30px;
+    opacity : 0.8;
+}
+.CHEESE, .HOLE {
+    padding: 20px;
+}
+#footerTable{
+    width: 200px;
+    margin: 0 auto;
+}
+#replayBtn, #undoBtn {
+    margin : 30px 0px 15px 15px;
+    background-color: rgb(255, 157, 77);
+    border: none;
+    border-bottom: 3px solid rgb(168, 101, 46);
+    border-right: 3px solid rgb(168, 101, 46);
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+    font-size: 23px;
+    padding: 16px 25px;
+    cursor: pointer;
+}

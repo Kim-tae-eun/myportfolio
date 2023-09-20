@@ -1,0 +1,120 @@
+#header { text-align: center; }
+a {
+    color: rgb(202, 50, 96);
+    text-decoration: none;
+    font-size: 30px;
+}
+#title, #titleTable, #gameTable {
+    margin: 0 auto;
+    text-align: center;
+    width: 525px;
+}
+#titleName {
+    color: #058a29;
+    margin-bottom: 20px;
+    font-size: 35px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    text-shadow: 4px 2px 2px lightgray;
+}
+.appleImages {
+    width: 45px;
+}
+#appleCount {
+    width: 50px;
+    font-size: 30px;
+    font-weight: bold;
+}
+#palyButton {
+    width: 150px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: tomato;
+    color: white;
+    border-style: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 2px 5px 10px 0px rgba(0,0,0,0.35);
+}
+#playTd {
+    text-align: right;
+}
+#gameTable {
+    height: 525px;
+    margin-top: 20px;
+    border: 1px solid rgb(56, 78, 63);
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+#gameTable td {
+    width: 36px;
+    height: 36px;
+    border: 1px solid white;
+    background-color: rgb(194, 212, 195);
+    padding: 0px;
+}
+#gameTable .snakeBody {
+    background-color: rgb(158, 158, 158);
+}
+#gameTable .snakeHead {
+    background-color: rgba(36, 34, 34, 0.84);
+}
+#img {
+    max-width: 100%;
+    max-height: 88%;
+}
+#footer {
+    width: 300px;
+    height: 50px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 20px;
+    color: tomato;
+    text-shadow: 4px 2px 2px rgba(177, 177, 177, 0.35);
+}
+
+
+/* popupo 창 */
+#popup_layer {
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    position:fixed;
+    top:0;
+    left:0;
+}
+.popup_box{
+    width:350px;
+    height: 300px;
+    position: relative;
+    z-index:1002;
+    top:50%;
+    left:50%;
+    text-align: center;
+    transform:translate(-50%, -50%);
+    box-sizing:border-box;
+    opacity: 0.8;
+    box-shadow: 2px 5px 10px 0px rgba(0,0,0,0.35);
+    -webkit-box-shadow: 2px 5px 10px 0px rgba(0,0,0,0.35);
+    -moz-box-shadow: 2px 5px 10px 0px rgba(0,0,0,0.35);
+    background:#ffffff;
+    color: #524640;
+    border-radius: 10px;
+    font-size: 10px;
+    padding:25px;
+}
+#OKBtn {
+    background:none;
+    color: #524640;
+    opacity: 0.8;
+    margin-top: 15px;
+    font-size: 30px;
+    padding: 5px 10px;
+    font-weight: bold;
+    border: 2px solid #524640;
+    border-radius: 10px;
+    cursor: pointer;
+}

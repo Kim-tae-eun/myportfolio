@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        td {
+            width: 100px;
+            height: 10px;
+        }
+    </style>
+</head>
+<body>
+    <table id="center" border="1">
+        <!-- 첫번째행 -->
+        <tr>
+            <td></td>
+            <td rowspan="9">
+                <div id="tetrisCenter"></div>
+            </td>
+            <td></td>
+        </tr>
+         <!-- 첫번째행 -->
+         <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        <!-- 세번째행 -->
+        <tr>
+            <td>
+                <div class="sideTable">HOLD</div>
+                
+            </td>
+            <td>
+                <div class="sideTable">NEXT</div>
+                
+            </td>
+        </tr>
+        <!-- 네번째행 -->
+        <tr>
+            <td>
+                <div id="holdTable"></div>
+            </td>
+            <td rowspan="5">
+                <div id="nextScreen"></div>
+                
+            </td>
+        </tr>
+        <!-- 다섯번째행 -->
+        <tr>
+            <td>
+                <div id="gamePlayInfo">
+                    미노 이동 : 좌, 우 방향키<br>
+                    시계 방향 회전 : 위 방향키<br>
+                    소프트 드롭 : 아래방향키<br>
+                    하드 드롭 : 스페이스 바<br>
+                    홀드 : shift<br>
+                </div>
+            </td>
+        </tr>
+        <!-- 여섯번째행 -->
+        <tr>
+            <td>
+                <div id="levelTd">LEVEL<br><span id="level" style="font-size: 25px;">1</span></div>
+            </td>
+        </tr>
+        <!-- 일곱번째행 -->
+        <tr>
+            <td>
+                <div id="linesTd">LINES<br><span id="lines" style="font-size: 25px;">0</span></div>
+            </td>
+        </tr>
+        <!-- 여덟번째행 -->
+        <tr>
+            <td>
+                <div id="scoreTd">SCORE<br><span id="score" style="font-size: 25px;">0</span></div>
+            </td>
+        </tr>
+        <!-- 아홉번째행 -->
+        <tr>
+            <td>
+                <div id="timerTd">TIME<br><span id="min" style="font-size: 25px;">0</span><span style="font-size: 25px;">:</span><span id="sec" style="font-size: 25px;">0.00</span></div>
+            </td>
+            <td>
+            </td>
+        </tr>
+    </table>
+    
+    
+</body>
+</html>

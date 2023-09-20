@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>2048 Game</title>
+
+    <link rel="stylesheet" href="Game2048.css">
+</head>
+
+<body onload="selectGame()">
+<!-- ---------------------------- header start ----------------------------- -->
+<div id="header">
+    <h3><a href="../index.html">MINI GAME PROJECT</a></h3>
+</div>
+
+<hr width="300px" color="palevioletred" size="1">
+<br>
+<!-- ---------------------------- header finish ----------------------------- -->  
+<div id="title">
+    <!-- <h3 id="titleName">2048 Game</h3> -->
+    <table id="titleTable">
+        <tr>
+            <td class="titleTd" rowspan="2" id="td2048">2048</td>
+            <td class="titleTd" id="tdScore">SCORE<br><span id="score">0</span></td>
+            <td class="titleTd" id="tdBest">BEST<br><span id="best">0</span></td>
+        </tr>
+        <tr>
+            <td class="titleTd" id="tdUndo"><input type="button" value="Undo" id="btnUndo"></td>
+            <td class="titleTd" id="tdNewGame"><input type="button" value="New game" id="btnNewGame" onclick="location.href='Game2048.html'"></td>
+        </tr>
+        <tr>
+            <td class="titleTd" colspan="3" id="tdtext">Join the numbers and get to the <span style="color: #555555;">2048 tile!</span></td>
+        </tr>
+    </table>
+</div>
+<div id="center">
+    <div id="popup_layer" style="display: none;">
+        <div class="popup_box">
+            <div>
+              <h1> game over !</h1>
+              <input type="button" id="XButton" value="X" onclick="closePop()">
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+<div id="footer"></div>
+
+<script src="Game2048.js"></script>
+</body>
+</html>

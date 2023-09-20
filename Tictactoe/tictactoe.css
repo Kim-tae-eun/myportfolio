@@ -1,0 +1,123 @@
+/* main */
+#header, #title, #center { text-align: center; }
+a {
+    color: rgb(202, 50, 96);
+    text-decoration: none;
+    font-size: 30px;
+}
+#title {
+    color: hwb(345 44% 0%);
+    margin-bottom: 30px;
+    display: none;
+}
+#mainTable {
+    width: 500px;
+    height: 250px;
+    margin: 0 auto;
+    margin-top: 150px;
+    border: 2px solid gray;
+    border-radius: 5px;
+}
+.selectBtn {
+    width: 200px;
+    height: 60px;
+    margin: 10px;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    background-color: hwb(345 44% 0%);
+    border-style: none;
+    border-radius: 5px;
+    cursor: pointer;
+    
+    /* 마우스가 벗어 났을 때에도 
+    자연스럽게 크기가 줄어들기 위한 설정 */
+    transform:scale(1.0);     
+    transition: transform .5s;    
+}
+.selectBtn:hover {
+    transform:scale(0.95);        
+    transition: transform .5s;    
+}
+#mainTitle {
+    padding: 20px 30px;
+    font-size: 40px;
+    font-weight: bold;
+    color: hwb(345 44% 0%);
+}
+#mainContent {
+    padding: 20px 30px;
+    font-size: 28px;
+}
+#mainFooter {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+/* header */
+#headerTable, #footerTable {
+    width: 400px;
+    height: 80px;
+    margin: 0 auto;
+    margin-top: 20px;
+    text-align: center;
+    line-height: 80px;
+    font-size: 30px;
+    font-weight: bold;
+    color: gray;
+}
+
+/* game */
+#gameTable {
+    margin: 0 auto;    
+}
+#turnTable {
+    margin: 0 auto;
+    width: 400px;
+    height: 80px;
+    text-align: center;
+    border: 2px solid gray;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: 30px
+}
+.playerBtn {
+    width: 176px;
+    height: 56px;
+    color: white;
+    font-size: 26px;
+    font-weight: bold;
+    border-style: none;
+    border-radius: 10px;
+}
+#contentTable {
+    margin: 0 auto;
+    text-align: center;
+}
+.block {
+    width: 124px;
+    height: 124px;
+    padding: 0px;
+    background-color: #ff9bb4;
+    border: 5px solid white;
+    border-radius: 5px;
+    font-size: 60px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
+#replayBtn {
+    width: 400px;
+    height: 56px;
+    font-size: 25px;
+    font-weight: bold;
+    background-color: hwb(345 44% 0%);
+    color: white;
+    border-style: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none;
+}
+#winner {
+    color: hwb(345 44% 0%);
+}

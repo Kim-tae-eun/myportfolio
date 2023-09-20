@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title>SOKOBAN</title>
+
+<style>
+    #header, #title, #center, #info_msg, #footer {
+        text-align: center;
+        margin: auto;
+    }
+    a {
+        color: rgb(202, 50, 96);
+        text-decoration: none;
+        font-size: 30px;
+    }
+    #gameTitle {
+        color: rgb(255, 143, 51);
+        font-size: 30px;
+    }
+    #center {
+        width: 500px;
+        height: 500px;
+        vertical-align: middle;
+        margin: auto;
+        background-color: rgb(245, 237, 220);
+        border: 5px solid rgb(255, 170, 101);
+        border-radius: 10px;
+        padding: 30px;
+    }
+    #info_msg {
+        width: 400px;
+        height: 330px;
+        text-align: left;
+        background-color: rgb(240, 118, 18);
+        border: 5px solid rgb(255, 255, 255);
+        border-radius: 15px;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 1.8;
+        padding: 30px;
+        opacity : 0.7;
+    }
+    #info_mainMsg {
+        text-align: center;
+        font-size: 25px;
+    }
+    #playBtn {
+        margin-top: 30px;
+        background-color: rgb(255, 157, 77);
+        border: none;
+        border-bottom: 3px solid rgb(168, 101, 46);
+        border-right: 3px solid rgb(168, 101, 46);
+        border-radius: 10px;
+        color: rgb(255, 255, 255);
+        font-size: 25px;
+        font-weight: bold;
+        padding: 15px 30px;
+        cursor: pointer;
+    }
+</style>
+</head>
+
+<body>
+<!-- ---------------------------- header start ----------------------------- -->
+<div id="header">
+    <h3><a href="../index.html">MINI GAME PROJECT</a></h3>
+</div>
+
+<hr width="300px" color="palevioletred" size="1">
+<!-- ---------------------------- header finish ----------------------------- -->  
+
+<div id="title">
+    <h3 id="gameTitle">소코반 게임</h3>
+</div>
+<div id="center">
+    <div id="info_msg">
+        <div id="info_mainMsg">▷ 게임방법 ◁</div>
+        <br>
+        캐릭터를 상(↑), 하(↓), 좌(←), 우(→) 방향키를 이용하여 움직여서
+        목표지점에 치즈를 모두 집어 넣으면 됩니다.<br>
+        현스텝을 취소하려면 하단의 UNDO 버튼을 누르면 됩니다.<br>
+        START 버튼을 클릭하면 게임이 시작됩니다.
+    </div>
+</div>
+
+
+<div id="footer">
+    <input type = "button" id="playBtn" value="START" onclick="location.href='STAGE1.html'">
+</div>
+<script>
+    let playBtn = document.querySelector("#playBtn");
+
+    playBtn.addEventListener("mousedown", (event) => {
+        playBtn.style.border="none";
+        playBtn.style.borderTop="3px solid rgb(168, 101, 46)";
+        playBtn.style.borderLeft="3px solid rgb(168, 101, 46)";
+	});
+    playBtn.addEventListener("mouseout", (event) => {
+        playBtn.style.border="none";
+        playBtn.style.borderBottom="3px solid rgb(168, 101, 46)";
+        playBtn.style.borderRight="3px solid rgb(168, 101, 46)";
+	});
+    
+</script>
+</body>
+</html>

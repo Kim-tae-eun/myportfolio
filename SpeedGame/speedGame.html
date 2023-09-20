@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speed Game</title>
+    <link rel="stylesheet" href="speedGame.css">
+
+</head>
+<body onload="init()">
+
+ <!-- ---------------------------- header start ----------------------------- -->
+    <div id="header">
+        <h3><a href="../index.html">MINI GAME PROJECT</a></h3>
+    </div>
+
+    <hr width="300px" color="palevioletred" size="1">
+<!-- ---------------------------- header finish ----------------------------- -->  
+
+    <div id="title">
+        <h3 style="color:tomato; font-size:30px;">Speed Game 1 To 50</h3>
+    </div>
+    <div id="info_msg">최대한 빠른 시간 내에 숫자타일을 순서대로 클리어하세요!</div>
+
+    <div id="assistance" style="color: #7e4e3c;;">
+        <span id="time">TIME &nbsp; <span id="timer" style="font-size:20px;">0.00</span></span>
+        <span id="hint">
+            <span> CLICK! <span id="blink" style="color: tomato;">▶</span></span>
+            <button onclick="hintClick()" id="hintButton">hint</button>
+            <span id="nextNum">1</span>
+        </span>
+    </div>
+
+    <div id="center">
+        <span id="gameEnd">
+        </span>
+    </div>
+    
+    <div id="footer">
+        <input type = "button" id="replayButton" value="다시하기" onclick="replay()">
+    </div>
+    
+    <script src="speedGame.js"></script>
+
+</body>
+</html>

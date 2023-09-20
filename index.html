@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MINI GAME</title>
+
+    <style>
+        #header, hr { text-align: center; }
+        a {
+            color: rgb(202, 50, 96);
+            text-decoration: none;
+            font-size: 30px;
+        }
+
+        #center {
+            text-align: center;
+            margin: auto;
+        }
+        table { margin: auto; }
+        td {
+            width: 150px;
+            padding: 10px;
+        }
+        .btn {
+            width: 130px;
+            height: 130px;
+            border-style: none;
+            border: 2px solid #ff9cc2;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: white;
+        }
+        .btn-img {
+            width: 100px;
+        }
+        #puzzle {
+            width: 90px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        #tetris {
+            width: 120px;
+        }
+        .gameName {
+            font-weight: bold;
+            color: rgb(202, 50, 96);
+            margin: 10px 0px;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <!-- ---------------------------- header start ----------------------------- -->
+    <div id="header">
+        <h3><a href="index.html">MINI GAME PROJECT</a></h3>
+    </div>
+    
+    <hr width="300px" color="palevioletred" size="1">
+    <br>
+    <!-- ---------------------------- header finish ----------------------------- -->
+
+    <div id="center">
+    <table>
+        <tr>
+            <td>
+                <button class="btn" onclick="location.href='./Tictactoe/tictactoe.html'">
+                    <img src="images/tictactoe.jpg" class="btn-img">
+                </button>
+                <br>
+                <div class="gameName">
+                    Tic Tac Toe Game
+                </div>
+            </td>
+            <td>
+                <button class="btn" onclick="location.href='./SnakeGame/snakeGame.html'">
+                    <img src="images/snake.png" class="btn-img">
+                </button>
+                <br>
+                <div class="gameName">
+                    Snake Game
+                </div>
+            </td>
+            <td>
+                <button class="btn" onclick="location.href='./Game2048/Game2048.html'">
+                    <img src="images/numbers.png" class="btn-img">
+                </button>
+                <br>
+                <div class="gameName">
+                    2048 Game
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn" onclick="location.href='./SpeedGame/speedGame.html'">
+                    <img src="images/clock.jpg" class="btn-img">
+                </button>
+                <br>
+                <div class="gameName">
+                    Speed Game
+                </div>
+            </td>
+            <td>
+                <button class="btn" onclick="location.href='./Tetris/기존테트리스/tetris.html'">
+                    <img src="images/tetris.png" class="btn-img" id="tetris">
+                </button>
+                <br>
+                <div class="gameName">
+                    Tetris
+                </div>
+            </td>
+            <td>
+                <button class="btn" onclick="location.href='./SOKOBAN/index.html'">
+                    <img src="images/cheese.png" class="btn-img">
+                </button>
+                <br>
+                <div class="gameName">
+                    SOKOBAN
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn" onclick="location.href='./NumberSlidingPuzzle/numbersSlidingPuzzle.html'">
+                    <img src="images/puzzle.png" class="btn-img" id="puzzle">
+                </button>
+                <br>
+                <div class="gameName">
+                    Sliding Puzzle
+                </div>
+            </td>
+            <td>
+                <button class="btn" onclick="location.href='./RacingGame/racingGame.html'">
+                    <img src="images/carousel.png" class="btn-img" id="horse">
+                </button>
+                <br>
+                <div class="gameName">
+                    Racing Game
+                </div>
+            </td>
+        </tr>
+    </table>
+    </div>
+
+</body>
+</html>
